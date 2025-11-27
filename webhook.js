@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const PORT = process.env.WEBHOOK_PORT || 3000;
-const VERIFY_TOKEN = process.env.WEBHOOK_VERIFY_TOKEN || 'changeme';
+const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 
 const app = express();
 app.use(bodyParser.json());
