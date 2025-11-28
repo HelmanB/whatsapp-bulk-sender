@@ -31,17 +31,22 @@ function enviarDesdeCSV() {
   fs.createReadStream("recipients.csv")
     .pipe(csv())
     .on("data", async (row) => {
-      const numero = row.numero;
-      const mensaje = row.mensaje;
 
-      if (!numero || !mensaje) {
+      // ← ← ← columnas EXACTAS que tienes en tu CSV
+      const numero = row.phone;
+      const nombre = row.first_name;
+
+      if (!numero) {
         console.log("Fila inválida:", row);
         return;
       }
 
+      // mensaje automático usando el nombre
+      const mensaje = `Hola ${nombre}, este es un mensaje masivo de prueba.`;
+
       await enviarMensaje(numero, mensaje);
 
-      // evitar bloqueo por spam
+      // pausa anti-spam
       await new Promise((r) => setTimeout(r, 400));
     })
     .on("end", () => {
