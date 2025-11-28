@@ -2,9 +2,9 @@
   "name": "whatsapp-bulk-cloudapi",
   "version": "1.0.0",
   "description": "Bulk sender for WhatsApp Cloud API (template messages)",
-  "main": "webhook.js",
+  "main": "send.js",
   "scripts": {
-    "start": "node webhook.js",
+    "start": "node send.js",
     "webhook": "node webhook.js"
   },
   "dependencies": {
