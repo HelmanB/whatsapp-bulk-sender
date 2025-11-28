@@ -1,4 +1,4 @@
-import { enviarTodos } from "./sendSCV.js";
+import { enviarTodos } from "./sendCSV.js";
 
 app.get("/enviar", async (req, res) => {
   enviarTodos();
