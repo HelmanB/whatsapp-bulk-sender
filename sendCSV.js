@@ -16,7 +16,7 @@ async function enviarTemplate(numero, nombre) {
       type: "template",
       template: {
         name: "saludo_prueba",   // NOMBRE EXACTO DE LA PLANTILLA APROBADA
-        language: { code: "es_CO" },
+        language: { code: "en" },
         components: [
           {
             type: "body",
