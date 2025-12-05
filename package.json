@@ -1,11 +1,10 @@
 {
   "name": "whatsapp-bulk-cloudapi",
   "version": "1.0.0",
-  "description": "Bulk sender for WhatsApp Cloud API (text or template messages)",
   "type": "module",
-  "main": "sendCSV.js",
+  "main": "sendTemplateCSV.js",
   "scripts": {
-    "start": "node sendCSV.js"
+    "start": "node sendTemplateCSV.js"
   },
   "dependencies": {
     "axios": "^1.5.0",
