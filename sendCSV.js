@@ -6,6 +6,9 @@ dotenv.config();
 
 const token = process.env.WHATSAPP_TOKEN;
 const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
+console.log("TOKEN LENGTH:", token?.length || 0);
+console.log("PHONE ID:", phoneNumberId);
+
 
 async function enviarMensaje(numero, mensaje) {
   try {
