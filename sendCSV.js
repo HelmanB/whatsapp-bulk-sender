@@ -7,22 +7,33 @@ dotenv.config();
 const token = process.env.WHATSAPP_TOKEN;
 const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
 
-
-
-async function enviarMensaje(numero, mensaje) {
+// ENVIO DE PLANTILLA
+async function enviarTemplate(numero, nombre) {
   try {
+    const data = {
+      messaging_product: "whatsapp",
+      to: numero,
+      type: "template",
+      template: {
+        name: "hello_world",   // NOMBRE EXACTO DE LA PLANTILLA APROBADA
+        language: { code: "es" },
+        components: [
+          {
+            type: "body",
+            parameters: [
+              { type: "text", text: nombre }
+            ]
+          }
+        ]
+      }
+    };
+
     await axios.post(
       `https://graph.facebook.com/v21.0/${phoneNumberId}/messages`,
-      {
-        messaging_product: "whatsapp",
-        to: numero,
-        type: "text",
-        text: { body: mensaje }
-      },
-      {
-        headers: { Authorization: `Bearer ${token}` }
-      }
+      data,
+      { headers: { Authorization: `Bearer ${token}` } }
     );
+
     console.log(`✔ Enviado a ${numero}`);
   } catch (error) {
     console.error(`❌ Error enviando a ${numero}`, error.response?.data);
@@ -36,14 +47,12 @@ function enviarDesdeCSV() {
       const numero = row.phone;
       const nombre = row.first_name;
 
-      if (!numero) {
+      if (!numero || !nombre) {
         console.log("Fila inválida:", row);
         return;
       }
 
-      const mensaje = `Hola ${nombre}, este es un mensaje masivo de prueba.`;
-
-      await enviarMensaje(numero, mensaje);
+      await enviarTemplate(numero, nombre);
 
       await new Promise((r) => setTimeout(r, 400));
     })
