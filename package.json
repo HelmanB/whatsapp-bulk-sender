@@ -2,7 +2,7 @@
   "name": "whatsapp-bulk-cloudapi",
   "version": "1.0.0",
   "type": "module",
-  "main": "sendTemplateCSV.js",
+  "main": "sendCSV.js",
   "scripts": {
     "start": "node sendTemplateCSV.js"
   },
