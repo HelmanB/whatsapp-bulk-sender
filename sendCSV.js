@@ -10,13 +10,32 @@ const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
 // ENVIO DE PLANTILLA
 async function enviarTemplate(numero, nombre) {
   try {
-   const data = {
+    const data = {
       messaging_product: "whatsapp",
       to: numero,
       type: "template",
       template: {
-        name: "saludo_prueba",   // nombre EXACTO de la plantilla
-        language: { code: "en" }  // usa este código
+        name: "saludo_prueba",
+        language: { code: "en_US" },
+        components: [
+          {
+            type: "header",
+            parameters: [
+              {
+                type: "image",
+                image: {
+                  link: "https://i.imgur.com/yourimage.jpg" // reemplaza
+                }
+              }
+            ]
+          },
+          {
+            type: "body",
+            parameters: [
+              { type: "text", text: nombre }
+            ]
+          }
+        ]
       }
     };
 
@@ -28,9 +47,10 @@ async function enviarTemplate(numero, nombre) {
 
     console.log(`✔ Enviado a ${numero}`);
   } catch (error) {
-    console.error(`❌ Error enviando a ${numero}`, error.response?.data);
+    console.error(`❌ Error enviando`, error.response?.data);
   }
 }
+
 
 function enviarDesdeCSV() {
   fs.createReadStream("recipients.csv")
