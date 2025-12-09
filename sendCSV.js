@@ -16,7 +16,7 @@ async function enviarTemplate(numero) {
       type: "template",
       template: {
         name: "saludo_prueba",
-        language: { code: "en_US" },
+        language: { code: "en" },
         components: [
           {
             type: "header",
