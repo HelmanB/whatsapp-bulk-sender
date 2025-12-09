@@ -8,7 +8,7 @@ const token = process.env.WHATSAPP_TOKEN;
 const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
 
 // ENVIO DE PLANTILLA
-async function enviarTemplate(numero, nombre) {
+async function enviarTemplate(numero) {
   try {
     const data = {
       messaging_product: "whatsapp",
@@ -16,7 +16,7 @@ async function enviarTemplate(numero, nombre) {
       type: "template",
       template: {
         name: "saludo_prueba",
-        language: { code: "en" },
+        language: { code: "en_US" },
         components: [
           {
             type: "header",
@@ -31,21 +31,22 @@ async function enviarTemplate(numero, nombre) {
           },
           {
             type: "body"
-            ]
           }
         ]
       }
     };
 
-    await axios.post(
+    const response = await axios.post(
       `https://graph.facebook.com/v21.0/${phoneNumberId}/messages`,
       data,
-      { headers: { Authorization: `Bearer ${token}` } }
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
     );
 
-    console.log(`✔ Enviado a ${numero}`);
+    console.log("✔ Enviado", response.data);
   } catch (error) {
-    console.error(`❌ Error enviando`, error.response?.data);
+    console.error("❌ Error enviando", error.response?.data);
   }
 }
 
