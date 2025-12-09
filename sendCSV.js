@@ -10,21 +10,13 @@ const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
 // ENVIO DE PLANTILLA
 async function enviarTemplate(numero, nombre) {
   try {
-    const data = {
+   const data = {
       messaging_product: "whatsapp",
       to: numero,
       type: "template",
       template: {
-        name: "saludo_prueba",   // NOMBRE EXACTO DE LA PLANTILLA APROBADA
-        language: { code: "en" },
-        components: [
-          {
-            type: "body",
-            parameters: [
-              { type: "text", text: nombre }
-            ]
-          }
-        ]
+        name: "saludo_prueba",   // nombre EXACTO de la plantilla
+        language: { code: "en_US" }  // usa este código
       }
     };
 
