@@ -16,7 +16,7 @@ async function enviarTemplate(numero, nombre) {
       type: "template",
       template: {
         name: "saludo_prueba",   // nombre EXACTO de la plantilla
-        language: { code: "en_US" }  // usa este código
+        language: { code: "en" }  // usa este código
       }
     };
 
