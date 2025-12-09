@@ -24,7 +24,7 @@ async function enviarTemplate(numero, nombre) {
               {
                 type: "image",
                 image: {
-                  link: "https://i.imgur.com/yourimage.jpg" // reemplaza
+                  link: "https://raw.githubusercontent.com/HelmanB/whatsapp-bulk-sender/main/Foto.jpeg
                 }
               }
             ]
