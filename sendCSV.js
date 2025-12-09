@@ -30,9 +30,7 @@ async function enviarTemplate(numero, nombre) {
             ]
           },
           {
-            type: "body",
-            parameters: [
-              { type: "text", text: nombre }
+            type: "body"
             ]
           }
         ]
